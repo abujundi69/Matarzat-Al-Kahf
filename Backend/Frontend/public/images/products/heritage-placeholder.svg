@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title description">
+  <title id="title">Matarzat Al Kahf heritage product placeholder</title>
+  <desc id="description">A burgundy, olive, gold, and cream geometric pattern inspired by Palestinian embroidery.</desc>
+  <defs>
+    <pattern id="stitch" width="180" height="180" patternUnits="userSpaceOnUse">
+      <rect width="180" height="180" fill="#f3e9da"/>
+      <path d="M90 10 170 90 90 170 10 90Z" fill="#70212d"/>
+      <path d="M90 42 138 90 90 138 42 90Z" fill="#fffaf2"/>
+      <path d="m90 62 28 28-28 28-28-28Z" fill="#596b3d"/>
+      <path d="M10 10h36v36H10zm124 0h36v36h-36zM10 134h36v36H10zm124 0h36v36h-36z" fill="#b28a45"/>
+      <path d="M0 86h42v8H0zm138 0h42v8h-42zM86 0h8v42h-8zm0 138h8v42h-8z" fill="#9f2737"/>
+    </pattern>
+    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffaf2" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#292421" stop-opacity=".18"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1125" fill="url(#stitch)"/>
+  <rect width="900" height="1125" fill="url(#shade)"/>
+  <rect x="115" y="410" width="670" height="305" rx="42" fill="#fffaf2" fill-opacity=".94" stroke="#b28a45" stroke-width="8"/>
+  <path d="M450 446 590 562.5 450 679 310 562.5Z" fill="#70212d"/>
+  <path d="m450 490 86 72.5-86 72.5-86-72.5Z" fill="#f3e9da"/>
+  <path d="m450 520 50 42.5-50 42.5-50-42.5Z" fill="#596b3d"/>
+  <circle cx="450" cy="562.5" r="13" fill="#b28a45"/>
+</svg>

@@ -1,0 +1,7 @@
+using MatarzatAlKahf.Application.Common.Pagination;
+using MatarzatAlKahf.Application.Features.Notifications.DTOs;
+
+namespace MatarzatAlKahf.Application.Features.Notifications.Interfaces;
+public interface INotificationService : IEnqueueNotificationService, IListCustomerNotificationService, IMarkReadNotificationService, IMarkAllReadNotificationService, IListAdminNotificationService, IRetryNotificationService, ICancelNotificationService, IListTemplatesNotificationService, ISaveTemplateNotificationService, IDeleteTemplateNotificationService
+{
+}

@@ -1,0 +1,23 @@
+# Line endings are LF everywhere, matching Backend/.editorconfig (end_of_line = lf).
+# Git normalizes text files to LF on commit and checks them out as LF whatever core.autocrlf says,
+# so Windows, CI, and tooling that generates CRLF (dotnet ef migrations, Visual Studio) all agree
+# and a stray line-ending difference can never show up as a modified file again.
+* text=auto eol=lf
+
+# Binary assets: no text conversion, no textual diffs.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.pdf binary
+*.docx binary
+*.xlsx binary
+*.zip binary
+*.bak binary

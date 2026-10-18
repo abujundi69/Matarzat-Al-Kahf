@@ -1,0 +1,33 @@
+# Node
+node_modules/
+dist/
+.vite/
+
+# .NET
+bin/
+obj/
+.vs/
+
+# Environment / Secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+*.user
+*.suo
+
+# Logs
+*.log
+.runtime-logs/
+
+# Local agent/editor state (shared .claude configuration may still be committed explicitly)
+.claude/*.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local test credentials (plain-text passwords, never commit)
+login.txt

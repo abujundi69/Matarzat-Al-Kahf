@@ -1,0 +1,547 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+  /* Brand palette, measured on the emblem (src/assets/brand/logo.png): embroidery red #8b090f,
+     warm black #17120f, tan-gold outline #b48852, disc cream #f6ead9. The token names are
+     historical; only the values follow the logo.
+     Red is the one loud colour: actions, links, active states. Black, cream and gold carry
+     everything else, the way they do in the artwork. */
+  --heritage-burgundy: #850b12;  /* primary: the thread red, deepened a notch for AA text contrast */
+  --heritage-red: #a8141d;       /* hover, active and accent red */
+  --heritage-gold: #b48852;      /* the emblem's outline gold: rules, focus rings, highlights (never body text) */
+  --heritage-sand: #dcc7a8;
+  --heritage-beige: #f4e9d8;     /* the emblem's cream: chips and section surfaces */
+  --heritage-cream: #fffaf2;     /* page background */
+  --heritage-charcoal: #231c18;  /* the emblem's warm black: text and dark surfaces */
+  --heritage-muted: #6f655d;     /* secondary text, 5:1 on cream */
+  --heritage-line: #e8dece;      /* hairlines and card borders */
+  --heritage-line-strong: #d9cbb4; /* input borders */
+  /* Feedback colours. Kept apart from the brand red so "this failed" never reads as a call to
+     action: the danger red leans orange, the success green is a deep leaf. */
+  --state-danger-text: #b3261e;
+  --state-danger-solid: #b3261e;
+  --state-danger-surface: #fdf1ef;
+  --state-danger-border: #f0cdc8;
+  --state-warning-text: #7a4e12;
+  --state-warning-surface: #fdf6e8;
+  --state-warning-border: #ead7ac;
+  --state-success-text: #2f5c3b;
+  --state-success-surface: #eef6f0;
+  --state-success-border: #c5dfcd;
+  --font-sans: "Noto Sans Arabic Variable", "Noto Sans Variable", "Segoe UI", Tahoma, Arial, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  color: var(--heritage-charcoal);
+  background: var(--heritage-cream);
+  font-synthesis: none;
+  font-variant-ligatures: common-ligatures contextual;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--heritage-cream);
+}
+
+html[lang="ar"] body {
+  line-height: 1.65;
+  letter-spacing: normal;
+}
+
+/* Latin text leads in English so letters, digits and punctuation share one family. */
+html[lang="en"] {
+  font-family: "Noto Sans Variable", "Noto Sans Arabic Variable", "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+main,
+section,
+article,
+header,
+footer,
+nav,
+aside {
+  min-width: 0;
+}
+
+img,
+picture,
+video,
+canvas {
+  max-width: 100%;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+dt,
+dd,
+label,
+legend {
+  overflow-wrap: break-word;
+}
+
+bdi,
+.technical-value,
+[dir="ltr"]:not(html) {
+  unicode-bidi: isolate;
+}
+
+.technical-value,
+[dir="ltr"]:not(html) {
+  overflow-wrap: anywhere;
+}
+
+.technical-value {
+  direction: ltr;
+  text-align: start;
+}
+
+html[dir="rtl"] input:is([type="email"], [type="url"], [type="tel"], [type="number"]),
+html[dir="rtl"] .technical-input {
+  direction: ltr;
+  text-align: start;
+  unicode-bidi: isolate;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+  font: inherit;
+  line-height: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Native checkboxes, radios and range inputs would otherwise render in the browser's blue. */
+:root {
+  accent-color: var(--heritage-burgundy);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--heritage-gold) 35%, transparent);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+}
+
+th,
+td {
+  min-width: 0;
+  overflow-wrap: break-word;
+  text-align: start;
+  vertical-align: top;
+}
+
+/* The full-strength gold clears the 3:1 non-text contrast bar on cream and white, and stands out
+   even more on the dark sidebar and footer. */
+:focus-visible {
+  outline: 3px solid var(--heritage-gold);
+  outline-offset: 3px;
+}
+
+/* Cross-stitch field for dark brand surfaces: the "+" stitch of the embroidery, barely there.
+   .stitch-field is the texture alone; .heritage-pattern puts it on the brand red. */
+.stitch-field,
+.heritage-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' shape-rendering='crispEdges'%3E%3Cg fill='%23fffaf2' fill-opacity='.07'%3E%3Crect x='9' y='7' width='2' height='2'/%3E%3Crect x='7' y='9' width='6' height='2'/%3E%3Crect x='9' y='11' width='2' height='2'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 20px 20px;
+}
+.heritage-pattern { background-color: var(--heritage-burgundy); }
+
+/* Tatreez ribbon: the red and black diamond chain of the emblem's border, between two gold
+   rules, on cream. Sized by height so it stays crisp at any width. */
+.tatreez-band {
+  height: 10px;
+  background-color: var(--heritage-beige);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='14' viewBox='0 0 32 14' shape-rendering='crispEdges'%3E%3Crect width='32' height='1' fill='%23b48852'/%3E%3Crect y='13' width='32' height='1' fill='%23b48852'/%3E%3Cg fill='%23a8141d'%3E%3Crect x='7' y='2' width='2' height='2'/%3E%3Crect x='5' y='4' width='6' height='2'/%3E%3Crect x='3' y='6' width='10' height='2'/%3E%3Crect x='5' y='8' width='6' height='2'/%3E%3Crect x='7' y='10' width='2' height='2'/%3E%3C/g%3E%3Crect x='7' y='6' width='2' height='2' fill='%23f4e9d8'/%3E%3Cg fill='%23231c18'%3E%3Crect x='23' y='2' width='2' height='2'/%3E%3Crect x='21' y='4' width='6' height='2'/%3E%3Crect x='19' y='6' width='10' height='2'/%3E%3Crect x='21' y='8' width='6' height='2'/%3E%3Crect x='23' y='10' width='2' height='2'/%3E%3C/g%3E%3Crect x='23' y='6' width='2' height='2' fill='%23f4e9d8'/%3E%3Cg fill='%23b48852'%3E%3Crect x='15' y='6' width='2' height='2'/%3E%3Crect x='31' y='6' width='2' height='2'/%3E%3Crect x='-1' y='6' width='2' height='2'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 100%;
+}
+.tatreez-band-lg { height: 14px; }
+
+/* Stand-in for a missing product or category photo: warm cream with a faint gold stitch field.
+   ImagePlaceholder lays the emblem over it. */
+.placeholder-art {
+  background-color: var(--heritage-beige);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' shape-rendering='crispEdges'%3E%3Cg fill='%23b48852' fill-opacity='.22'%3E%3Crect x='9' y='7' width='2' height='2'/%3E%3Crect x='7' y='9' width='6' height='2'/%3E%3Crect x='9' y='11' width='2' height='2'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 20px 20px;
+}
+.page-shell {
+  width: min(1180px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(.75rem, 3vw, 1rem);
+}
+
+.card {
+  min-width: 0;
+  border: 1px solid var(--heritage-line);
+  border-radius: .875rem;
+  background: white;
+  box-shadow: 0 1px 2px rgb(35 28 24 / .04), 0 6px 20px rgb(35 28 24 / .05);
+}
+
+.card > * {
+  min-width: 0;
+}
+
+@layer components {
+  .button-primary { display: inline-flex; min-height: 44px; max-width: 100%; align-items: center; justify-content: center; gap: .5rem; border-radius: .625rem; border: 0; background: var(--heritage-burgundy); padding: .65rem 1.15rem; color: white; font-weight: 700; line-height: 1.4; text-align: center; white-space: normal; overflow-wrap: anywhere; cursor: pointer; transition: background-color .15s ease, box-shadow .15s ease; }
+  .button-primary:hover { background: var(--heritage-red); }
+  .button-secondary { display: inline-flex; min-height: 44px; max-width: 100%; align-items: center; justify-content: center; gap: .5rem; border-radius: .625rem; border: 1px solid var(--heritage-line-strong); background: white; padding: .65rem 1.15rem; color: var(--heritage-burgundy); font-weight: 700; line-height: 1.4; text-align: center; white-space: normal; overflow-wrap: anywhere; cursor: pointer; transition: background-color .15s ease, border-color .15s ease; }
+  .button-secondary:hover { border-color: var(--heritage-burgundy); background: var(--heritage-beige); }
+  .button-danger {
+    display: inline-flex;
+    min-height: 44px;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    border-radius: .625rem;
+    border: 0;
+    background: var(--state-danger-solid);
+    padding: .65rem 1.15rem;
+    color: white;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    transition: background-color .15s ease;
+  }
+  .button-danger:hover { background: #8f1d17; }
+  .button-primary:disabled,
+  .button-secondary:disabled,
+  .button-danger:disabled { opacity: .55; }
+
+  /* Inline validation message under a field. */
+  .field-error {
+    display: block;
+    margin-top: .25rem;
+    color: var(--state-danger-text);
+    font-size: .875rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  /* Boxed feedback banner. Pair with one of the tone classes below. */
+  .alert {
+    display: flex;
+    min-width: 0;
+    align-items: flex-start;
+    gap: .5rem;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    padding: .75rem;
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  .alert-error {
+    border-color: var(--state-danger-border);
+    background: var(--state-danger-surface);
+    color: var(--state-danger-text);
+  }
+  .alert-warning {
+    border-color: var(--state-warning-border);
+    background: var(--state-warning-surface);
+    color: var(--state-warning-text);
+  }
+  .alert-success {
+    border-color: var(--state-success-border);
+    background: var(--state-success-surface);
+    color: var(--state-success-text);
+  }
+
+}
+
+.field {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  border: 1px solid var(--heritage-line-strong);
+  border-radius: .625rem;
+  background: white;
+  padding-block: .7rem;
+  padding-inline: .9rem;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.field:hover:not(:disabled) { border-color: var(--heritage-gold); }
+.field:focus-visible { border-color: var(--heritage-burgundy); outline-offset: 0; }
+.field:disabled { background: var(--heritage-beige); }
+
+.field-icon-trailing {
+  padding-inline-end: 2.75rem;
+}
+
+.muted { color: var(--heritage-muted); }
+
+/* A left-to-right value (phone number, amount, count) reads correctly with dir="ltr" or dir="auto",
+   but both start it at the left edge, away from its right-aligned Arabic label. */
+html[dir="rtl"] dd[dir="ltr"],
+html[dir="rtl"] dd[dir="auto"] { text-align: right; }
+
+/* Text that is clipped on purpose (truncated or line-clamped). Arabic marks such as the hamza on an
+   alif or a stacked shadda reach above a tight line box, and overflow:hidden would shave them off.
+   The padding gives the clip box vertical headroom and the equal negative margin keeps the layout
+   exactly where it was. */
+.clip-safe { padding-block: .3em; margin-block: -.3em; }
+.badge {
+  display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: .2rem .65rem;
+  background: var(--heritage-beige);
+  color: var(--heritage-burgundy);
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  white-space: normal;
+  /* break-word (not anywhere): it must not shrink the badge's minimum width, otherwise a short
+     status such as "Active" collapses to a circle in a narrow table cell and wraps letter by letter. */
+  overflow-wrap: break-word;
+}
+/* Status tones. Same shape as .badge, colour carries the meaning (text still says it too). */
+.badge-success { background: var(--state-success-surface); color: var(--state-success-text); box-shadow: inset 0 0 0 1px var(--state-success-border); }
+.badge-warning { background: var(--state-warning-surface); color: var(--state-warning-text); box-shadow: inset 0 0 0 1px var(--state-warning-border); }
+.badge-danger { background: var(--state-danger-surface); color: var(--state-danger-text); box-shadow: inset 0 0 0 1px var(--state-danger-border); }
+.badge-neutral { background: #f1ece4; color: var(--heritage-muted); }
+
+.skeleton { animation: pulse 1.5s ease-in-out infinite; border-radius: .75rem; background: #eadfd2; }
+
+.category-rail {
+  display: grid;
+  min-width: 0;
+  grid-auto-flow: column;
+  grid-auto-columns: min(30vw, 8rem);
+  gap: .5rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-padding-inline: .25rem;
+  scroll-snap-type: inline mandatory;
+  scrollbar-color: rgb(133 11 18 / .38) transparent;
+  scrollbar-width: thin;
+  padding: .25rem .25rem .9rem;
+  margin-inline: -.25rem;
+}
+
+.category-rail > * {
+  scroll-snap-align: start;
+}
+
+.category-card {
+  position: relative;
+}
+
+.category-filter-rail {
+  display: flex;
+  min-width: 0;
+  gap: .65rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline proximity;
+  scrollbar-width: thin;
+  padding: .25rem .2rem .65rem;
+}
+
+.category-filter-chip {
+  display: inline-flex;
+  min-height: 44px;
+  max-width: min(18rem, 80vw);
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  align-items: center;
+  gap: .55rem;
+  border: 1px solid var(--heritage-line-strong);
+  border-radius: 999px;
+  background: white;
+  padding: .55rem .85rem;
+  color: var(--heritage-charcoal);
+  font-weight: 750;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.category-filter-chip:hover {
+  border-color: var(--heritage-burgundy);
+}
+
+.category-filter-chip[data-active="true"] {
+  border-color: var(--heritage-burgundy);
+  background: var(--heritage-burgundy);
+  color: white;
+}
+
+.category-filter-count {
+  display: grid;
+  min-width: 1.55rem;
+  min-height: 1.55rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--heritage-beige);
+  padding-inline: .35rem;
+  color: var(--heritage-burgundy);
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.category-filter-chip[data-active="true"] .category-filter-count {
+  background: rgb(255 255 255 / .16);
+  color: white;
+}
+
+.admin-sidebar {
+  transform: translateX(-100%);
+  padding-block-end: max(1rem, env(safe-area-inset-bottom));
+}
+
+.admin-sidebar-nav {
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.app-tooltip {
+  position: fixed;
+  z-index: 120;
+  max-width: min(18rem, calc(100vw - 1rem));
+  max-height: calc(100dvh - 1rem);
+  overflow: auto;
+  transform: translateY(-50%);
+  border: 1px solid rgb(255 255 255 / .14);
+  border-radius: .65rem;
+  background: var(--heritage-charcoal);
+  box-shadow: 0 10px 30px rgb(0 0 0 / .22);
+  padding-block: .45rem;
+  padding-inline: .7rem;
+  color: white;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: start;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+
+[dir="rtl"] .admin-sidebar { transform: translateX(100%); }
+.admin-sidebar[data-mobile-open="true"] { transform: translateX(0); }
+[dir="rtl"] .admin-sidebar-toggle svg { transform: scaleX(-1); }
+@keyframes pulse { 50% { opacity: .45; } }
+
+@keyframes dialog-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dialog-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes dialog-panel-in {
+  from { opacity: 0; transform: scale(.94) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes dialog-panel-out {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to { opacity: 0; transform: scale(.96) translateY(6px); }
+}
+.dialog-backdrop-enter { animation: dialog-backdrop-in .22s ease-out both; }
+.dialog-backdrop-exit { animation: dialog-backdrop-out .18s ease-in both; }
+.dialog-panel-enter { animation: dialog-panel-in .28s cubic-bezier(.16, 1, .3, 1) both; }
+.dialog-panel-exit { animation: dialog-panel-out .18s ease-in both; }
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--heritage-charcoal);
+}
+.splash-screen-exit { animation: splash-screen-out .45s ease-in both; }
+@keyframes splash-screen-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes splash-logo-in {
+  0% { opacity: 0; transform: scale(.7) translateY(14px); }
+  60% { opacity: 1; transform: scale(1.05) translateY(0); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes splash-text-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes splash-progress-grow { from { width: 0%; } to { width: 100%; } }
+.splash-logo { animation: splash-logo-in .7s cubic-bezier(.2, .9, .3, 1.2) both; }
+.splash-brand-text { animation: splash-text-in .55s ease-out .22s both; }
+.splash-tagline-text { animation: splash-text-in .55s ease-out .36s both; }
+.splash-progress-track {
+  display: flex;
+  overflow: hidden;
+}
+.splash-progress-fill {
+  background: var(--heritage-gold);
+  animation: splash-progress-grow 1.6s cubic-bezier(.35, 0, .25, 1) both;
+}
+@media (min-width: 64rem) {
+  .admin-sidebar,
+  [dir="rtl"] .admin-sidebar { transform: translateX(0); }
+}
+@media (min-width: 40rem) {
+  .category-rail {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: visible;
+    scroll-snap-type: none;
+    padding: .25rem;
+  }
+}
+@media (min-width: 48rem) {
+  .category-rail { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+@media (min-width: 64rem) {
+  .category-rail { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}

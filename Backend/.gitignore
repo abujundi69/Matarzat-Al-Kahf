@@ -1,0 +1,66 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Aa]rtifacts/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# Visual Studio and user-specific files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# Packages and generated files
+packages/
+*.nupkg
+*.snupkg
+
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+secrets.json
+*.usersecrets
+appsettings.*.local.json
+*.local.*.json
+!appsettings.*.local.example.json
+*.pfx
+*.p12
+*.pem
+*.key
+*.db
+*.sqlite
+*.sqlite3
+*.bak
+login.txt
+test-results/
+playwright-report/
+
+# Logs
+*.log
+logs/
+
+# Runtime uploads (keep the directory structure only)
+uploads/**/*
+!uploads/**/.gitkeep
+
+# Local SQL Server database files
+*.mdf
+*.ldf
+*.ndf
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
